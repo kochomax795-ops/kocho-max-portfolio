@@ -1,0 +1,952 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kocho Max — Full-Stack Developer</title>
+  <meta name="description"
+    content="Kocho Max is a full-stack developer from Uganda specializing in real-time web and mobile systems, SaaS platforms, and secure backend solutions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --bg: #ffffff;
+      --surface: #f5f5f5;
+      --surface-strong: #e8edf5;
+      --text: #111111;
+      --muted: #4a5568;
+      --border: #d1d5db;
+      --accent: #0066ff;
+      --accent-soft: #e6f0ff;
+      --shadow: 0 24px 60px rgba(17, 24, 39, 0.08);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Inter', sans-serif;
+      min-height: 100%
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    img {
+      max-width: 100%;
+      display: block
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit
+    }
+
+    button {
+      cursor: pointer
+    }
+
+    .page-wrap {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 2rem 1.75rem 4rem;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.85rem;
+      padding: 1rem 0;
+    }
+
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+    border-bottom: 1px solid var(--border)
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none
+    }
+
+    .nav-links a {
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--text)
+    }
+
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+      color: var(--muted);
+      font-weight: 700;
+      transition: all .2s;
+    }
+
+    .nav-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .theme-btn {
+      border: 1px solid var(--border);
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      color: var(--muted);
+      background: #fff;
+      transition: all .2s;
+    }
+
+    .theme-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent)
+    }
+
+    .section {
+      padding: 5rem 0
+    }
+
+    .section:first-of-type {
+      padding-top: 2rem
+    }
+
+    .grid {
+      display: grid;
+      gap: 3rem
+    }
+
+    .hero-grid {
+      grid-template-columns: minmax(0, 1.35fr) 0.95fr;
+      align-items: start;
+      gap: 2.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero-left {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .hero-copy {
+      max-width: 620px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      align-items: center;
+    }
+
+    .hero-actions .btn {
+      min-width: 160px;
+    }
+
+    .hero-image {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(17, 24, 39, 0.08);
+      border: 1px solid var(--border);
+      min-height: 520px;
+      aspect-ratio: 4 / 5;
+      background: var(--surface);
+      width: 100%;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.81rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.1rem
+    }
+
+    .hero-heading {
+      font-size: clamp(3rem, 5vw, 4.4rem);
+      line-height: 1.02;
+      font-weight: 700;
+      margin-bottom: 1rem
+    }
+
+    .hero-heading .highlight {
+      color: var(--accent)
+    }
+
+    .hero-lead {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 620px;
+      margin-bottom: 2rem
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.95rem 1.6rem;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: all .25s
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: var(--accent);
+      border: 1px solid var(--accent)
+    }
+
+    .btn-primary:hover {
+      background: #004bb5;
+      transform: translateY(-1px)
+    }
+
+    .btn-secondary {
+      color: var(--accent);
+      background: transparent;
+      border: 1px solid var(--accent)
+    }
+
+    .btn-ghost {
+      color: var(--text);
+      background: transparent;
+      border: 1px solid var(--border)
+    }
+
+    .banner-cards {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+
+    .banner-card {
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--surface);
+      box-shadow: var(--shadow)
+    }
+
+    .banner-number {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.45rem
+    }
+
+    .banner-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted)
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .skill-card {
+      padding: 1.5rem;
+      border-radius: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .skill-card h4 {
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .skill-card span {
+      display: inline-flex;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 700;
+      padding: 0.65rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
+
+    .service-card,
+    .case-card,
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: var(--shadow)
+    }
+
+    .service-card h3,
+    .case-card h3 {
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      color: var(--text)
+    }
+
+    .service-card p,
+    .case-card p {
+      color: var(--muted);
+      line-height: 1.8
+    }
+
+    .service-card ul {
+      margin-top: 1.3rem;
+      display: grid;
+      gap: 0.75rem;
+      list-style: none;
+      padding: 0
+    }
+
+    .service-card li {
+      padding: 0.75rem 1rem;
+      border-radius: 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+      color: var(--text)
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 0.8rem
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 660px
+    }
+
+    .case-card {
+      display: grid;
+      gap: 1.5rem
+    }
+
+    .case-card .case-meta {
+      display: grid;
+      gap: 0.5rem
+    }
+
+    .case-card .case-meta span {
+      font-size: 0.83rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent)
+    }
+
+    .case-list {
+      margin: 1rem 0 0;
+      padding-left: 1rem;
+      list-style-type: disc;
+      color: var(--muted)
+    }
+
+    .case-list li {
+      margin-bottom: 0.65rem;
+      line-height: 1.8
+    }
+
+    .case-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap
+    }
+
+    .case-card .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent)
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem
+    }
+
+    .contact-card {
+      display: grid;
+      gap: 1rem
+    }
+
+    .contact-card h3 {
+      margin-bottom: 0
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    html[data-theme='dark'] {
+      --bg: #0b1220;
+      --surface: #111827;
+      --surface-strong: #1f2937;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: #334155;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.16);
+      --shadow: 0 24px 60px rgba(15, 23, 42, 0.42);
+    }
+
+    html[data-theme='dark'] body {
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    html[data-theme='dark'] nav,
+    html[data-theme='dark'] .service-card,
+    html[data-theme='dark'] .case-card,
+    html[data-theme='dark'] .contact-card,
+    html[data-theme='dark'] .contact-form,
+    html[data-theme='dark'] .banner-card {
+      background: var(--surface);
+      border-color: var(--border);
+    }
+
+    html[data-theme='dark'] .theme-btn,
+    html[data-theme='dark'] .contact-link {
+      background: #111827;
+    }
+
+    html[data-theme='dark'] .btn-primary:hover {
+      background: #3b82f6;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 0.85rem
+    }
+
+    .contact-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--border);
+      color: var(--text)
+    }
+
+    .contact-link span {
+      font-size: 0.95rem;
+      color: var(--muted)
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 1rem;
+      border-radius: 24px;
+      padding: 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow)
+    }
+
+    .contact-form label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text)
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1rem;
+      background: #fff;
+      color: var(--text);
+      outline: none
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.12)
+    }
+
+    footer {
+      padding: 2rem 0 1rem;
+      color: var(--muted);
+      font-size: 0.93rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem
+    }
+
+    footer strong {
+      color: var(--text)
+    }
+
+    @media (max-width:980px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .banner-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        position: relative;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: static;
+        width: 100%;
+        flex-direction: column;
+        gap: 0.75rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 1rem;
+        box-shadow: var(--shadow);
+        margin-top: 0.5rem;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-toggle {
+        order: 3;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 0.95rem 1rem;
+        border-radius: 14px;
+        background: #fff;
+      }
+
+      .nav-links a:hover {
+        background: var(--accent-soft);
+      }
+
+      .hero-image {
+        min-height: 360px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-left {
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width:700px) {
+      .page-wrap {
+        padding: 1.25rem 1rem 3rem
+      }
+
+      .hero-heading {
+        font-size: 2.6rem
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: start
+      }
+
+      .section {
+        padding: 3rem 0
+      }
+
+      .service-card,
+      .case-card,
+      .contact-card {
+        padding: 1.5rem
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrap">
+    <nav>
+      <a class="nav-logo" href="#hero">KM — Ajijim Tech</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu">Menu</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="theme-btn" id="themeToggle">Dark</button>
+    </nav>
+
+    <section id="hero" class="section reveal">
+      <div class="grid hero-grid">
+        <div class="hero-left">
+          <div class="hero-copy reveal">
+            <div class="hero-eyebrow">Full-Stack Developer</div>
+            <h1 class="hero-heading">I help businesses launch reliable web and mobile products with real-time features.
+            </h1>
+            <p class="hero-lead">I’m a full-stack developer and BSCS student at Uganda Christian University. I build
+              fast,
+              maintainable applications that combine clean UI, scalable APIs, and real-time systems for emerging
+              markets.
+            </p>
+            <div class="hero-actions">
+              <a href="#work" class="btn btn-primary">View Case Studies</a>
+              <a href="#contact" class="btn btn-secondary">Contact Me</a>
+              <a href="Kocho_Max_Resume.pdf" download class="btn btn-ghost">Download Resume</a>
+            </div>
+          </div>
+          <div class="banner-cards reveal">
+            <div class="banner-card">
+              <div class="banner-number">5+</div>
+              <div class="banner-label">Projects Delivered</div>
+            </div>
+            <div class="banner-card">
+              <div class="banner-number">4</div>
+              <div class="banner-label">Technical Domains</div>
+            </div>
+            <div class="banner-card">
+              <div class="banner-number">Y1</div>
+              <div class="banner-label">UCU BSCS Cohort</div>
+            </div>
+            <div class="banner-card">
+              <div class="banner-number">Live</div>
+              <div class="banner-label">GitHub Portfolio</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-image reveal">
+          <img src="profile picture.png" alt="Profile picture of Kocho Max">
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section reveal">
+      <div class="section-title">About Me</div>
+      <p class="section-subtitle">I’m Kocho Max, a software engineer building production-grade apps in React, React
+        Native, Node.js and Firebase. I combine product thinking with technical execution for fast delivery.</p>
+      <div class="grid" style="grid-template-columns:1.2fr 0.8fr;gap:3rem;align-items:start;margin-top:2.5rem;">
+        <div>
+          <p>I lead projects from concept to launch — whether that means designing mobile workflows, building secure
+            backend APIs, or setting up data-driven messaging systems. My work focuses on practical solutions for real
+            user needs.</p>
+          <p>Current focus areas include real-time messaging platforms, SaaS products for creators, and emergency
+            response tools tailored for the Ugandan market.</p>
+        </div>
+        <div class="service-card">
+          <h3>Quick facts</h3>
+          <ul>
+            <li>UCU Mukono — BSc Computer Science</li>
+            <li>Ajijim Tech Solutions Ltd founder</li>
+            <li>React / React Native / Node.js / MySQL</li>
+            <li>Firebase, Socket.io, WebRTC, Flutterwave</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section reveal">
+      <div class="section-title">Services</div>
+      <p class="section-subtitle">I help organizations ship reliable products with a modern full-stack approach.</p>
+      <div class="card-grid">
+        <div class="service-card">
+          <h3>Web & Mobile Apps</h3>
+          <p>Designing and developing clean, responsive interfaces for web and mobile experiences.</p>
+          <ul>
+            <li>React web apps</li>
+            <li>React Native / Expo mobile apps</li>
+            <li>UI-first product experiences</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <h3>Backend & APIs</h3>
+          <p>Building secure and scalable server systems to support fast product growth.</p>
+          <ul>
+            <li>Node.js / Express APIs</li>
+            <li>Authentication and data security</li>
+            <li>Database design with MySQL</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <h3>Realtime Features</h3>
+          <p>Creating real-time messaging, notifications, and live collaboration experiences.</p>
+          <ul>
+            <li>Socket.io and WebRTC</li>
+            <li>Firebase realtime sync</li>
+            <li>Live chat and video calls</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section reveal">
+      <div class="section-title">Skills & Tools</div>
+      <p class="section-subtitle">A snapshot of the technologies and workflows I rely on to build production-ready
+        products.</p>
+      <div class="skills-grid">
+        <div class="skill-card reveal">
+          <h4>Frontend</h4>
+          <span>React</span>
+        </div>
+        <div class="skill-card reveal">
+          <h4>Mobile</h4>
+          <span>React Native</span>
+        </div>
+        <div class="skill-card reveal">
+          <h4>Backend</h4>
+          <span>Node.js</span>
+        </div>
+        <div class="skill-card reveal">
+          <h4>Database</h4>
+          <span>MySQL</span>
+        </div>
+        <div class="skill-card reveal">
+          <h4>Realtime</h4>
+          <span>Socket.io</span>
+        </div>
+        <div class="skill-card reveal">
+          <h4>Cloud</h4>
+          <span>Firebase</span>
+        </div>
+        <div class="skill-card reveal">
+          <h4>Payments</h4>
+          <span>Flutterwave</span>
+        </div>
+        <div class="skill-card reveal">
+          <h4>Design</h4>
+          <span>Figma</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="section reveal">
+      <div class="section-title">Case Studies</div>
+      <p class="section-subtitle">Deep-dives into three standout projects that demonstrate my technical scope and
+        product mindset.</p>
+      <div class="card-grid">
+        <div class="case-card">
+          <div class="case-meta"><span>Emergency Response Platform</span></div>
+          <h3>Real-time dispatch for medical services</h3>
+          <p>A mobile-first emergency response platform built for the Ugandan market that connects dispatchers,
+            responders, and patients with live location tracking.</p>
+          <ul class="case-list">
+            <li><strong>Context:</strong> Delivered in 12 weeks for local emergency services while leading the product
+              architecture and implementation.</li>
+            <li><strong>Problem:</strong> Existing dispatch workflows were manual, slow, and disconnected from live
+              responder location data.</li>
+            <li><strong>Process:</strong> Mapped user journeys, built wireframes for mobile dispatch flows, and
+              implemented Firebase realtime updates.</li>
+            <li><strong>Solution:</strong> Launched a React Native app with GPS tracking, route guidance, Twilio
+              notifications, and secure backend APIs.</li>
+            <li><strong>Results:</strong> Pilot tests showed a 30% faster response handoff and reduced coordination
+              delays.</li>
+          </ul>
+          <div class="case-actions"><a href="https://github.com/kochomax795-op" target="_blank"
+              class="btn btn-ghost">View Code</a></div>
+        </div>
+        <div class="case-card">
+          <div class="case-meta"><span>Music Streaming SaaS</span></div>
+          <h3>Creator platform for streaming and payments</h3>
+          <p>A music SaaS product with playlists, secure playback, and Flutterwave payment integration for artist
+            monetization.</p>
+          <ul class="case-list">
+            <li><strong>Context:</strong> Built as a scalable product concept for independent musicians and local
+              creators.</li>
+            <li><strong>Problem:</strong> Artists lacked a trusted platform for streaming, payments, and revenue
+              tracking in Uganda.</li>
+            <li><strong>Process:</strong> Developed UI mockups, designed relational data models, and integrated payment
+              checkout flows.</li>
+            <li><strong>Solution:</strong> Delivered a React frontend, Node.js API, and MySQL backend with secure user
+              authentication.</li>
+            <li><strong>Results:</strong> Launched a reusable SaaS prototype suited for early adopters and digital
+              content marketplaces.</li>
+          </ul>
+          <div class="case-actions"><a href="https://github.com/kochomax795-op" target="_blank"
+              class="btn btn-ghost">View Code</a></div>
+        </div>
+        <div class="case-card">
+          <div class="case-meta"><span>ChatWave</span></div>
+          <h3>Real-time messenger with collaboration</h3>
+          <p>A modern chat platform that supports live messaging, video calls, and AI-assisted replies for more engaging
+            conversations.</p>
+          <ul class="case-list">
+            <li><strong>Context:</strong> Created during a rapid delivery cycle as a demonstration of realtime
+              engineering skills.</li>
+            <li><strong>Problem:</strong> Teams needed a fast, dependable messaging app with voice/video and persistent
+              chat.</li>
+            <li><strong>Process:</strong> Iterated on UI flows, implemented Socket.io infrastructure, and added WebRTC
+              media sessions.</li>
+            <li><strong>Solution:</strong> Released a full-stack web messenger with stable live chat, video calling, and
+              AI workflow support.</li>
+            <li><strong>Results:</strong> Delivered a prototype with over 95% successful message delivery in test
+              sessions.</li>
+          </ul>
+          <div class="case-actions"><a href="https://github.com/kochomax795-op" target="_blank"
+              class="btn btn-ghost">View Code</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section reveal">
+      <div class="section-title">Contact</div>
+      <p class="section-subtitle">Ready to work together? Send a message or review my resume for a full overview of my
+        skills and experience.</p>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Reach me directly</h3>
+          <div class="contact-list">
+            <a class="contact-link"
+              href="mailto:kochomax795@gmail.com"><span>Email</span><span>kochomax795@gmail.com</span></a>
+            <a class="contact-link" href="tel:+256781418243"><span>Phone</span><span>+256 781 418 243</span></a>
+            <a class="contact-link" href="https://github.com/kochomax795-op"
+              target="_blank"><span>GitHub</span><span>kochomax795-op</span></a>
+            <a class="contact-link" href="https://www.linkedin.com/in/max-kocho-405bb1407"
+              target="_blank"><span>LinkedIn</span><span>Kocho Max</span></a>
+          </div>
+        </div>
+        <form class="contact-form" action="mailto:kochomax795@gmail.com" method="post" enctype="text/plain">
+          <label for="name">Name</label>
+          <input id="name" name="Name" type="text" placeholder="Your name" required>
+          <label for="email">Email</label>
+          <input id="email" name="Email" type="email" placeholder="you@example.com" required>
+          <label for="message">Message</label>
+          <textarea id="message" name="Message" rows="5" placeholder="Tell me about your project" required></textarea>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <span>Built by <strong>Kocho Max</strong> • Ajijim Tech Solutions Ltd</span>
+      <span>© 2026 • Nabilatuk, Uganda</span>
+    </footer>
+  </div>
+
+  <script>
+    const themeBtn = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    const storedTheme = localStorage.getItem('ajijim-theme') || 'light';
+    html.setAttribute('data-theme', storedTheme);
+    themeBtn.textContent = storedTheme === 'dark' ? 'Light' : 'Dark';
+    const toggleTheme = () => { const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; html.setAttribute('data-theme', next); localStorage.setItem('ajijim-theme', next); themeBtn.textContent = next === 'dark' ? 'Light' : 'Dark'; };
+    themeBtn.addEventListener('click', toggleTheme);
+    const observer = new IntersectionObserver((entries) => { entries.forEach((entry, i) => { if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('in'), i * 70); observer.unobserve(entry.target); } }); }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('a[href^="#"]').forEach(link => { link.addEventListener('click', e => { const target = document.querySelector(link.getAttribute('href')); if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); const navLinks = document.getElementById('navLinks'); if (navLinks.classList.contains('open')) { navLinks.classList.remove('open'); } } }); });
+
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-label', navLinks.classList.contains('open') ? 'Close navigation menu' : 'Open navigation menu');
+    });
+  </script>
+</body>
+
+</html>
